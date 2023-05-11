@@ -1,7 +1,7 @@
 const express = require('express')
 const path = require('path')
 const socketIO = require('socket.io');
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8002
 const fetch = require('node-fetch');
 
 // start the express server with the appropriate routes for our webhook and web requests
@@ -34,13 +34,13 @@ function notificationReceived(req) {
 // add an address to a notification in Alchemy
 async function addAddress(new_address) {
   console.log("adding address " + new_address);
-  const body = { webhook_id: <webhook-id>, addresses_to_add: [new_address], addresses_to_remove: [] };
+  const body = { webhook_id: 'wh_fwprvcbg95743ev2	', addresses_to_add: [new_address], addresses_to_remove: [] };
   try {
     fetch('https://dashboard.alchemyapi.io/api/update-webhook-addresses', {
       method: 'PATCH',
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
-      headers: { 'X-Alchemy-Token': <Alchemy-auth-key>}
+      headers: { 'X-Alchemy-Token': 'vHwfpZ6rtiUnZ1cRnhf1TDCPkXPrypOv'}
     })
       .then(res => res.json())
       .then(json => console.log("Successfully added address:", json))
