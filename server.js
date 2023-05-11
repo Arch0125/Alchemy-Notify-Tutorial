@@ -41,7 +41,7 @@ async function addAddress(new_address) {
     addresses_to_remove: [],
   };
   const body2 = {
-    webhook_id: process.env.GOERLI_WEBHOOK_ID,
+    webhook_id: process.env.ETH_GOERLI_WEBHOOK_ID,
     addresses_to_add: [new_address],
     addresses_to_remove: [],
   };
