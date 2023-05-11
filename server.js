@@ -36,7 +36,7 @@ async function addAddress(new_address) {
   console.log("adding address " + new_address);
   const body = { webhook_id: 'wh_fwprvcbg95743ev2	', addresses_to_add: [new_address], addresses_to_remove: [] };
   try {
-    fetch('https://alchemy-notify-tutorial-production-9318.up.railway.app/webhook', {
+    fetch('https://dashboard.alchemyapi.io/api/update-webhook-addresses', {
       method: 'PATCH',
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
