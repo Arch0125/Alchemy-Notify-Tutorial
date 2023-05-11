@@ -40,7 +40,7 @@ async function addAddress(new_address) {
       method: 'PATCH',
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
-      headers: { 'X-Alchemy-Token': 'vHwfpZ6rtiUnZ1cRnhf1TDCPkXPrypOv'}
+      headers: { 'X-Alchemy-Token': 'vNH0hCXC-wJeYLNAgsyxP0RG5JB1hKAU'}
     })
       .then(res => res.json())
       .then(json => console.log("Successfully added address:", json))
