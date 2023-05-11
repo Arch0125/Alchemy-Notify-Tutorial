@@ -3,6 +3,7 @@ const path = require("path");
 const socketIO = require("socket.io");
 const PORT = process.env.PORT || 8002;
 const fetch = require("node-fetch");
+const AddressHandler = require("./helpers/AddressHandler");
 require("dotenv").config();
 
 var app = express()
@@ -57,45 +58,10 @@ async function addAddress(new_address) {
   };
 
   try {
-    fetch("https://dashboard.alchemyapi.io/api/update-webhook-addresses", {
-      method: "PATCH",
-      body: JSON.stringify(body),
-      headers: { "Content-Type": "application/json" },
-      headers: { "X-Alchemy-Token": "vNH0hCXC-wJeYLNAgsyxP0RG5JB1hKAU" },
-    })
-      .then((res) => res.json())
-      .then((json) => console.log("Successfully added address:", json))
-      .catch((err) => console.log("Error! Unable to add address:", err));
-
-    fetch("https://dashboard.alchemyapi.io/api/update-webhook-addresses", {
-      method: "PATCH",
-      body: JSON.stringify(body2),
-      headers: { "Content-Type": "application/json" },
-      headers: { "X-Alchemy-Token": "vNH0hCXC-wJeYLNAgsyxP0RG5JB1hKAU" },
-    })
-      .then((res) => res.json())
-      .then((json) => console.log("Successfully added address:", json))
-      .catch((err) => console.log("Error! Unable to add address:", err));
-
-    fetch("https://dashboard.alchemyapi.io/api/update-webhook-addresses", {
-      method: "PATCH",
-      body: JSON.stringify(body3),
-      headers: { "Content-Type": "application/json" },
-      headers: { "X-Alchemy-Token": "vNH0hCXC-wJeYLNAgsyxP0RG5JB1hKAU" },
-    })
-      .then((res) => res.json())
-      .then((json) => console.log("Successfully added address:", json))
-      .catch((err) => console.log("Error! Unable to add address:", err));
-
-    fetch("https://dashboard.alchemyapi.io/api/update-webhook-addresses", {
-      method: "PATCH",
-      body: JSON.stringify(body4),
-      headers: { "Content-Type": "application/json" },
-      headers: { "X-Alchemy-Token": "vNH0hCXC-wJeYLNAgsyxP0RG5JB1hKAU" },
-    })
-      .then((res) => res.json())
-      .then((json) => console.log("Successfully added address:", json))
-      .catch((err) => console.log("Error! Unable to add address:", err));
+    await AddressHandler(body);
+    await AddressHandler(body2);
+    await AddressHandler(body3);
+    await AddressHandler(body4);
   } catch (err) {
     console.error(err);
   }
