@@ -1,4 +1,4 @@
-export const AddressHandler=(body)=>{
+const AddressHandler=(body)=>{
     fetch("https://dashboard.alchemyapi.io/api/update-webhook-addresses", {
       method: "PATCH",
       body: JSON.stringify(body),
@@ -9,3 +9,5 @@ export const AddressHandler=(body)=>{
       .then((json) => console.log("Successfully added address:", json))
       .catch((err) => console.log("Error! Unable to add address:", err));
 }
+
+module.exports=AddressHandler;
