@@ -4,6 +4,7 @@ const socketIO = require("socket.io");
 const PORT = process.env.PORT || 8002;
 const fetch = require("node-fetch");
 const AddressHandler = require("./helpers/AddressHandler");
+const NotificationHelper = require("./helpers/NotificationHelper");
 require("dotenv").config();
 
 var app = express()
@@ -30,6 +31,7 @@ function notificationReceived(req) {
   console.log("notification received!");
   const res = req.body;
   console.log(res);
+  NotificationHelper.sendNotification(res);
   const event = res.event;
     const network = event.network;
     const activity = event.activity[0];
@@ -39,7 +41,7 @@ function notificationReceived(req) {
   console.log("toaddr: " + toaddr);
   console.log("value: " + value);
   console.log("asset: " + asset);
-  
+
   io.emit("notification", JSON.stringify(req.body));
 }
 
