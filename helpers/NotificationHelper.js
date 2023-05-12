@@ -1,4 +1,4 @@
-import * as PushAPI from "@pushprotocol/restapi";
+const PushAPI = require('@pusher/push-notifications-server');
 const {ethers} = require('ethers');
 
 async function sendNotification(res){
