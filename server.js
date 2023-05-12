@@ -31,7 +31,7 @@ function notificationReceived(req) {
   console.log("notification received!");
   const res = req.body;
   console.log(res);
-  NotificationHelper.sendNotification(res);
+  NotificationHelper(res);
   const event = res.event;
     const network = event.network;
     const activity = event.activity[0];

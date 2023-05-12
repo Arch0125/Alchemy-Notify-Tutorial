@@ -1,7 +1,7 @@
 const PushAPI = require('@pushprotocol/restapi');
 const {ethers} = require('ethers');
 
-async function sendNotification(res){
+async function NotificationHelper(res){
     const pk = "0x" + process.env.PRIVATE_KEY;
     const signer = new ethers.Wallet(pk);
     const event = res.event;
@@ -61,4 +61,4 @@ async function sendNotification(res){
       }    
 }
 
-module.exports=sendNotification;
+module.exports=NotificationHelper;
