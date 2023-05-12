@@ -30,6 +30,16 @@ function notificationReceived(req) {
   console.log("notification received!");
   const res = req.body;
   console.log(res);
+  const event = res.event;
+    const network = event.network;
+    const activity = event.activity[0];
+    const toaddr = activity.toAddress;
+    const value = activity.value;
+    const asset = activity.asset;
+  console.log("toaddr: " + toaddr);
+  console.log("value: " + value);
+  console.log("asset: " + asset);
+  
   io.emit("notification", JSON.stringify(req.body));
 }
 
