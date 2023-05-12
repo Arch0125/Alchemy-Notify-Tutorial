@@ -13,8 +13,15 @@ async function NotificationHelper(res){
     const value = activity.value;
     const asset = activity.asset;
 
-    const sentmsg = `${value} ${asset} to ${(toaddr).slice(0,5)} on ${network}`;
-    const receivedmsg = `${value} ${asset} from ${(fromaddr).slice(0,5)} on ${network}`;
+    const networkname = {
+        'ETH_GOERLI': 'Goerli',
+        'ETH_MAINNET': 'Ethereum',
+        'MATIC_MAINNET': 'Polygon',
+        'MATIC_MUMBAI': 'Mumbai'
+    };
+
+    const sentmsg = `${value} ${asset} sent to ${(toaddr).slice(0,5)+'...'+toaddr.slice(47)} on ${networkname[network]}`;
+    const receivedmsg = `${value} ${asset} received from ${(fromaddr).slice(0,5)+'...'+fromaddr.slice(47)} on ${networkname[network]}`;
 
     try {
         const sentapiResponse = await PushAPI.payloads.sendNotification({
